@@ -1,0 +1,88 @@
+import random
+
+
+class VirtualPersonalTrainer:
+    def __init__(self, name, weight):
+        self.name = name
+        self.weight = weight
+        self.workout_plan = []
+
+    def generate_workout(self):
+        exercises = [
+            "push-up",
+            "squat",
+            "lunges",
+            "plank",
+            "burpees",
+            "sit-up",
+            "pull-up",
+            "deadlift",
+            "sprints",
+        ]
+        # Generate a random workout
+        self.workout_plan = random.sample(exercises, 3)
+
+    def display_workout(self):
+        print(f"Workout Plan for {self.name}:")
+        for exercise in self.workout_plan:
+            print(f"- {exercise}")
+
+    def ai_based_suggestions(self):
+        """Simulate an AI-based decision for workout recommendations based on weight and goal."""
+
+        # AI-based weight loss recommendation (simulation)
+        target_weight = 65  # Target weight for example
+        if self.weight > target_weight:
+            print(
+                f"Your current weight is {self.weight}kg. According to AI analysis, to reduce weight, focus on high-intensity cardio workouts like running, cycling, or HIIT."
+            )
+        elif self.weight < target_weight:
+            print(
+                f"Your current weight is {self.weight}kg. According to AI analysis, to gain muscle mass, focus on strength training exercises like weightlifting, squats, and push-ups."
+            )
+        else:
+            print(
+                f"Your current weight is {self.weight}kg, which is ideal. AI suggests maintaining your fitness with a balanced mix of cardio and strength training."
+            )
+
+    def predict_fitness_progress(self):
+        """Simulate predicting fitness progress with AI (such as based on weight)."""
+        if self.weight > 70:
+            print(
+                f"AI predicts that it will take approximately 3-6 months to achieve your weight loss goal."
+            )
+        elif self.weight < 60:
+            print(
+                f"AI predicts that it will take around 1-2 months to build muscle mass effectively."
+            )
+        else:
+            print(
+                f"AI predicts that with regular workouts, you can maintain your fitness level."
+            )
+
+
+# Main Program
+while True:
+    # User Input:
+    name = input("Enter your name: ")
+    weight = float(input("Enter your weight in kg: "))
+
+    # Create a user profile
+    user = VirtualPersonalTrainer(name, weight)
+
+    # Generate and display workout plan
+    user.generate_workout()
+    user.display_workout()
+
+    # Provide AI-based suggestions for weight management
+    user.ai_based_suggestions()
+
+    # Predict fitness progress based on weight
+    user.predict_fitness_progress()
+
+    # End conversation and ask for new user
+    another_person = input(
+        "Would another person like to use the virtual trainer? (yes/no): "
+    ).lower()
+    if another_person != "yes":
+        break
